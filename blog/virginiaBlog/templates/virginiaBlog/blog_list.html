@@ -1,14 +1,33 @@
-<a href="{% url 'virginiaBlog_create' %}">Agregar</a>
+<!DOCTYPE html>
+<html lang="en">
 
-{% if object_list %}
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a mi blog!</title>
+</head>
+
+<body class="m-5">
+    {% load bootstrap5 %}
+    <div class="m-2">
+        <a class="btn btn-primary" href="{% url 'virginiaBlog_create' %}">Agregar</a>
+    </div>
+
+    {% if object_list %}
     {% for blog in object_list %}
     <li>
         {{blog.titulo}}
-        <a href="{% url 'virginiaBlog_detail' blog.id %}">Detalle</a>
-        <a href="{% url 'virginiaBlog_delete' blog.id %}">Borrar</a>
-        <a href="{% url 'virginiaBlog_update' blog.id %}">Actualizar</a>
+        <a class="btn btn-secondary p-2" href="{% url 'virginiaBlog_detail' blog.id %}">Detalle</a>
+        <a class="btn btn-danger p-2" href="{% url 'virginiaBlog_delete' blog.id %}">Borrar</a>
+        <a class="btn btn-primary p-2" href="{% url 'virginiaBlog_update' blog.id %}">Actualizar</a>
     </li>
     {% endfor %}
-{% else %}
-  <h1> No hay blogs</h1>
-{% endif %}
+    {% else %}
+    <h1> No hay blogs</h1>
+    {% endif %}
+</body>
+
+</html>
