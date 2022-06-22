@@ -6,3 +6,7 @@ class BlogModel(models.Model):
     sub_titulo = models.CharField(max_length=100)
     cuerpo = models.TextField()
     autor = models.CharField(max_length=100)
+    fecha_creacion = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+         return self.titulo

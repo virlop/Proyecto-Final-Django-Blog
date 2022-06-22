@@ -11,22 +11,28 @@
 </head>
 
 <body class="m-5">
-    {% load bootstrap5 %}
-    <div class="m-2">
-        <a class="btn btn-primary" href="{% url 'virginiaBlog_create' %}">Agregar</a>
-    </div>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'virginiaBlog_logout' %}">Salir</a>
+        <a href="{% url 'virginiaBlog_create' %}">Agregar</a>
+    {% else %}
+        <a href="{% url 'virginiaBlog_signup' %}">Crear Cuenta</a>
+        <a href="{% url 'virginiaBlog_login' %}">Entrar</a>
+    {% endif %}
+    
 
     {% if object_list %}
-    {% for blog in object_list %}
-    <li>
-        {{blog.titulo}}
-        <a class="btn btn-secondary p-2" href="{% url 'virginiaBlog_detail' blog.id %}">Detalle</a>
-        <a class="btn btn-danger p-2" href="{% url 'virginiaBlog_delete' blog.id %}">Borrar</a>
-        <a class="btn btn-primary p-2" href="{% url 'virginiaBlog_update' blog.id %}">Actualizar</a>
-    </li>
-    {% endfor %}
-    {% else %}
-    <h1> No hay blogs</h1>
+        {% for blog in object_list %}
+            <li>
+                <a href="{% url 'virginiaBlog_detail' blog.id %}">{{blog.titulo}}</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'virginiaBlog_delete' blog.id %}">Borrar</a>
+                    <a href="{% url 'virginiaBlog_update' blog.id %}">Actualizar</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+        {% else %}
+        <h1> No hay blogs</h1>
     {% endif %}
 </body>
 

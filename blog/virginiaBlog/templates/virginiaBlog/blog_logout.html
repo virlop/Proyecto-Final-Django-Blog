@@ -11,14 +11,8 @@
 </head>
 
 <body>
-    {% load bootstrap5 %}
-    <form method="post">
-        {% csrf_token %}
-
-        <p class="fs-2">¿Está Seguro que quiere borrar "{{ object }}"?</p>
-        {{ form }}
-        <input type="submit" value="Confirmar">
-    </form>
+    <h1>Saliste de la App</h1>
+    <a href="{% url 'virginiaBlog_list' %}">Ir la lista de blogs</a>
 </body>
 
 </html>
