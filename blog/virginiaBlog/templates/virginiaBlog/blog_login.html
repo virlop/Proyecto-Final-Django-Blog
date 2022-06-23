@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido a mi blog!</title>
 </head>
-<body>
+<body class="m-3">
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Iniciar Sesión</button>
+        <button class="btn btn-outline-primary" type="submit">Iniciar Sesión</button>
     </form>
 </body>
 </html>

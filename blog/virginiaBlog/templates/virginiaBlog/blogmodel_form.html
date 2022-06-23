@@ -10,12 +10,12 @@
     <title>Bienvenido a mi blog!</title>
 </head>
 
-<body>
+<body class="m-3">
     {% load bootstrap5 %}
-
+    <h1 class="m-3">Agregando un nuevo Blog...</h1>
     <form method="post">{% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Guardar">
+        <input class="btn btn-success m-3" type="submit" value="Guardar">
     </form>
 </body>
 

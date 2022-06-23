@@ -1,10 +1,26 @@
-<a href="{% url 'virginiaBlog_list' %}">Volver a Lista Blogs</a>
-<a href="{% url 'blogger_edit' user.id %}">Editar Perfil</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="m-3">
+    <a class="btn btn-dark m-2 " href="{% url 'virginiaBlog_list' %}">Volver a Lista Blogs</a>
+    <br>
+    <a class="btn btn-info m-2 " href="{% url 'blogger_edit' user.id %}">Editar Perfil</a>
+    <h2 class="m-2">Datos</h2>
+     <ul style="list-style:none ;">
+         <li>Nombre: {{object.first_name}}<li>
+         <li>Apellido: {{object.last_name}}<li>
+         <li>Correo electrónico: {{object.email}} </li>
+         <li>Nombre de Usuario: {{object.username}}</li>
+     </ul>
+     <img height="140" src="{{ object.avatar_set.first.image.url }}" alt="">
+</body>
+</html>
 
- <ul>
-     <li>Nombre: {{object.first_name}}<li>
-     <li>Apellido: {{object.last_name}}<li>
-     <li>Correo electronico: {{object.email}} </li>
-     <li>Nombre de Usuario: {{object.username}}</li>
- </ul>
- <img src="{{ object.avatar_set.first.image.url }}" alt="">
