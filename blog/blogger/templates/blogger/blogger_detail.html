@@ -13,14 +13,22 @@
     <a class="btn btn-dark m-2 " href="{% url 'virginiaBlog_list' %}">Volver a Lista Blogs</a>
     <br>
     <a class="btn btn-info m-2 " href="{% url 'blogger_edit' user.id %}">Editar Perfil</a>
-    <h2 class="m-2">Datos</h2>
-     <ul style="list-style:none ;">
-         <li>Nombre: {{object.first_name}}<li>
-         <li>Apellido: {{object.last_name}}<li>
-         <li>Correo electrónico: {{object.email}} </li>
-         <li>Nombre de Usuario: {{object.username}}</li>
-     </ul>
-     <img height="140" src="{{ object.avatar_set.first.image.url }}" alt="">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-2">
+            <img style="height: 180px;" src="{{ object.avatar_set.first.image.url }}" alt="">
+        </div>
+        <div class="col-8">
+            <h2 class="m-2">Datos</h2>
+            <ul style="list-style:none ;">
+                <li>Nombre: {{object.first_name}}<li>
+                <li>Apellido: {{object.last_name}}<li>
+                <li>Correo electrónico: {{object.email}} </li>
+                <li>Nombre de Usuario: {{object.username}}</li>
+            </ul>
+        </div>
+    </div>
+
      <footer>
         <a class="btn btn-info m-2 " href="{% url 'virginiaBlog_about' %}">About</a>
     </footer>
