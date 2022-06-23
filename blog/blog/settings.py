@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-sjj$=l5v-9p61ymg-di+r+(x6%m8hq!@)j#$%-d9)0tptbhr7=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["testserver", "localhost"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'blogger',
     'bootstrap5',
     'virginiaBlog',
     'django.contrib.admin',
@@ -125,4 +126,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_URL = 'virginiaBlog_signup'
+LOGIN_URL = 'virginiaBlog_login'

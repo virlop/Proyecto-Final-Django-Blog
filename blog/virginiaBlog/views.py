@@ -9,12 +9,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from virginiaBlog.models import BlogModel
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.forms import UserCreationForm
-
-class SignUpView(SuccessMessageMixin, CreateView):
-    template_name = 'virginiaBlog/blog_crear_cuenta_form.html'
-    success_url = reverse_lazy('virginiaBlog_login')
-    form_class = UserCreationForm
-    success_message = "Your profile was created successfully"
+from django.views import View
 
 class BlogList(ListView):
 
@@ -32,14 +27,17 @@ class BlogCreate(LoginRequiredMixin,CreateView):
 
     model = BlogModel
     success_url = reverse_lazy("virginiaBlog_list") #a donde va si es exitosa la carga
-    fields = ["titulo", "sub_titulo", "cuerpo", "autor"] #campos del formulario para la creacion
+    fields = ["titulo", "sub_titulo", "cuerpo"] #campos del formulario para la creacion
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
 
 
 class BlogUpdate(LoginRequiredMixin,UpdateView):
 
     model = BlogModel
     success_url = reverse_lazy("virginiaBlog_list")
-    fields = ["titulo", "sub_titulo", "cuerpo", "autor"]
+    fields = ["titulo", "sub_titulo", "cuerpo"]
 
 
 class BlogDelete(LoginRequiredMixin,DeleteView):
@@ -53,3 +51,7 @@ class BlogLogin(LoginView):
 
 class BlogLogout(LogoutView):
     template_name = 'virginiaBlog/blog_logout.html'
+    
+class About(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, "virginiaBlog/blog_about.html", {})

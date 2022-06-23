@@ -10,5 +10,5 @@ urlpatterns = [
     path("borrar/<pk>/", views.BlogDelete.as_view(), name ="virginiaBlog_delete"),
     path("entrar/", views.BlogLogin.as_view(), name="virginiaBlog_login"),
     path("salir/", views.BlogLogout.as_view(), name="virginiaBlog_logout"),
-    path("crear-cuenta/", views.SignUpView.as_view(), name ="virginiaBlog_signup"),
+    path("about/", views.About.as_view(), name = "virginiaBlog_about" )
 ]
