@@ -21,6 +21,9 @@
          <li>Nombre de Usuario: {{object.username}}</li>
      </ul>
      <img height="140" src="{{ object.avatar_set.first.image.url }}" alt="">
+     <footer>
+        <a class="btn btn-info m-2 " href="{% url 'virginiaBlog_about' %}">About</a>
+    </footer>
 </body>
 </html>
 
